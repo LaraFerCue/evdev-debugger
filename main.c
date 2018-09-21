@@ -1,5 +1,7 @@
 #include <sys/time.h>
 
+#include <dev/evdev/input.h>
+
 #include <errno.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -9,13 +11,6 @@
 
 static char * name;
 static int  keep_going = 1;
-
-struct input_device {
-	struct timeval	time;
-	unsigned short	type;
-	unsigned short	code;
-	unsigned int	value;
-};
 
 void
 usage()
@@ -34,7 +29,7 @@ main(int argc, char** argv)
 {
 	int device_fd;
 	ssize_t bread;
-	struct input_device reg;
+	struct input_event reg;
 
 	name = argv[0];
 	if (argc != 3) {
@@ -56,7 +51,7 @@ main(int argc, char** argv)
 		perror(name);
 	}
 
-	while ((bread = read(device_fd, &reg, sizeof(struct input_device))) > 0 &&
+	while ((bread = read(device_fd, &reg, sizeof(struct input_event))) > 0 &&
 		keep_going)
 	{
 		fprintf(stdout, "time = %ld, type = %hx, code = %hx, value = %x\n",
