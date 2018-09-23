@@ -99,6 +99,10 @@ struct code_to_str BUTTON_EVENTS[] = {
 	{ BTN_TOOL_QUADTAP,"Button Tool QuadTap"	},
 	{ BTN_WHEEL,	"Button Wheel"			},
 	{ BTN_GEAR_DOWN,"Button Gear Down"		},
-	{ BTN_GEAR_UP,	"Button Gear Up"		}
+	{ BTN_GEAR_UP,	"Button Gear Up"		},
+	{ BTN_DPAD_UP,	"Button DPad Up"		},
+	{ BTN_DPAD_DOWN,"Button DPad Down"		},
+	{ BTN_DPAD_LEFT,"Button DPad Left"		},
+	{ BTN_DPAD_RIGHT,"Button DPad Right"		}
 };
 #endif
